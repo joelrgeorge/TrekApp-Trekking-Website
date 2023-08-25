@@ -8,7 +8,6 @@ import worldImg from '../assets/images/world.png'
 import experienceImg from '../assets/images/experience.png';
 import Subtitle from '../shared/Subtitle';
 
-
 import SearchBar from "../shared/SearchBar";
 import ServiceList from "../services/ServiceList";
 import FeaturedTourList from "../components/Featured-tours/FeaturedTourList";
@@ -33,7 +32,7 @@ const Home = () => {
             </div>
             <h1>Traveling Opens The Door To Creating {""}
             <span className="highlight">
-                Memories</span></h1>
+                memories</span></h1>
                 
                 <p> Travel gives us our greatest stories, 
                     our most cherished memories and countless

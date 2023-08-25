@@ -8,15 +8,15 @@ import "./header.css";
 const nav__links=[
     {
         path:"/home",
-        display:"Home",
+        display:"Home"
     },
     {
         path:"/about",
-        display:"About",
+        display:"About"
     },
     {
-        path:'/tours',
-        display:"Tours",
+        path:'/Tours',
+        display:"Tours"
     },
 ]
 
@@ -42,7 +42,7 @@ const Header = () => {
   })
 
   return (
-    <header classname="header" ref= {headerRef}>
+    <header className="header" ref= {headerRef}>
       <Container>
         <Row>
           <div className="nav__wrapper d-flex align-items-center justify-content-between">

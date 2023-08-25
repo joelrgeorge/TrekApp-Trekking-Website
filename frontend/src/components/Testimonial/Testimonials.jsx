@@ -49,7 +49,7 @@ const Testimonials = () => {
 
                 <img src={ava01} className='w-25 h-25 rounded-2' alt="" />
                 <div>
-                    <h6 className="mb-0 mt-3">John Doe</h6>
+                    <h6 className="mb-0 mt-3">Imroz Alam</h6>
                     <p>Customer
                     </p>
                 </div>
@@ -65,7 +65,7 @@ const Testimonials = () => {
 
                 <img src={ava02} className='w-25 h-25 rounded-2' alt="" />
                 <div>
-                    <h6 className="mb-0 mt-3">Jelia silva</h6>
+                    <h6 className="mb-0 mt-3">Joel</h6>
                     <p>Customer
                     </p>
                 </div>
@@ -81,7 +81,7 @@ const Testimonials = () => {
 
                 <img src={ava03} className='w-25 h-25 rounded-2' alt="" />
                 <div>
-                    <h6 className="mb-0 mt-3">Wick koe</h6>
+                    <h6 className="mb-0 mt-3">Ajit Kumar</h6>
                     <p>Customer
                     </p>
                 </div>
@@ -96,7 +96,7 @@ const Testimonials = () => {
 
                 <img src={ava03} className='w-25 h-25 rounded-2' alt="" />
                 <div>
-                    <h6 className="mb-0 mt-3">caton bil</h6>
+                    <h6 className="mb-0 mt-3">Ramesh</h6>
                     <p>Customer
                     </p>
                 </div>

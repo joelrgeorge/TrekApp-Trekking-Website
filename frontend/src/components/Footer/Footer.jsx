@@ -138,16 +138,7 @@ const year = new Date().getFullYear()
             
            <Col lg='12' className='text-center pt-5'>
                 <p className="copyright">
-                   <ul>
-                   <h5>Copyright © {year},
-                    Designed and Developed By</h5> 
-                    <li>Joshua charles,</li> 
-                    <li>Ajith Kumar G P</li> 
-                    <li>Joel Reji George</li>
-                    <li>Ramesh Kumar</li>
-                    <li>Imroz Alam</li>
-                    <li>Shreyas C R</li>
-                    <h5>All rights Reserved.</h5></ul> 
+                    Copyright {year}, design and develop
                 </p>
            </Col>
          </Row>
