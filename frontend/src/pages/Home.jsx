@@ -44,13 +44,13 @@ const Home = () => {
                 </Col>
 
                 <Col lg='2'>
-                    <div className="hero__img-box">
+                    <div className="hero__img">
                         <img src={heroImg} alt=""/>
                     </div>
                 </Col>
 
                 <Col lg='2'>
-                    <div className="hero__img" mt-4>
+                    <div className="hero__img-box hero__video-box mt-4">
                         <video src={heroVideo} alt="" controls/>
                     </div>
                 </Col>
@@ -99,7 +99,7 @@ const Home = () => {
                                 <Subtitle subtitle={'Experience'}/>
 
                                 <h1>With our all experience <br /> we will serve you</h1>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing slit.
+                                <p>Travelling make me feel happy.
                                     <br />
                                     Ques aliquam, hic tempora inventore suscipit unde.
                                 </p>
