@@ -103,15 +103,18 @@ const toggleMenu = () => menuRef.current.classList.toggle('show__menu')
               <Button className="btn primary__btn"><Link to='/register'>Register</Link></Button>
   </>
    )
-}
 
+   }
             </div>
 
             <span className="mobile__menu" onClick={toggleMenu}>
               <i class="ri-menu-line"></i>
             </span>
+
           </div>
+   
           </div>
+   
         </Row>       
       </Container>
     </header>
