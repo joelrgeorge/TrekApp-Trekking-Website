@@ -1,0 +1,49 @@
+/* Statistics.css */
+
+.statistics-container {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.count-circle {
+    display: inline-block;
+    margin: 20px;
+}
+
+.circle {
+    width: 200px;
+    height: 200px;
+    background-color: orange;
+    border-radius: 50%;
+    color: #fff;
+    font-size: 36px;
+    line-height: 200px;
+    text-align: center;
+    font-weight: bold; /* Make the text bold */
+}
+
+/* Style th and td elements */
+th, td {
+    text-align: center;
+    font-weight: bold; /* Make the text in th and td elements bold */
+}
+
+/* Additional styling for the table */
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+table, th, td {
+    border: 1px solid #ddd;
+}
+
+th, td {
+    padding: 8px;
+}
+
+th {
+    background-color: #f2f2f2;
+}
+
+/* Add more CSS rules for additional styling if needed */

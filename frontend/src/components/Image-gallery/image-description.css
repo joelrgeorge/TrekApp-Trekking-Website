@@ -1,0 +1,55 @@
+/* Add styles for the image popup */
+.image-popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.8); /* Semi-transparent black background */
+  z-index: 1000; /* Ensure the popup is on top of everything else */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden; /* Hide overflowing content */
+}
+
+.popup-content {
+  background-color: #fff; /* Background color of the popup content */
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5); /* Add a box shadow for a subtle effect */
+  text-align: center;
+  display: flex; /* Use flex to arrange image and description side by side */
+  max-width: 90%; /* Limit the maximum width of the popup content */
+  width: 800px; /* Set a fixed width for the container */
+  height: 400px; /* Set a fixed height for the container */
+  align-items: center; /* Vertically center the content */
+}
+
+.popup-image {
+  flex: 1; /* Expand to fill available space */
+  max-width: 100%; /* Allow the image to fill the container width */
+  max-height: 100%; /* Allow the image to fill the container height */
+  display: block;
+  border-radius: 10px 0 0 10px; /* Round the left corners of the image */
+}
+
+.popup-description {
+  flex: 1; /* Expand to fill available space */
+  padding: 20px;
+  font-size: 16px;
+  line-height: 1.5;
+  text-align: left; /* Align the description text to the left */
+  display: flex; /* Add flex to arrange content inside the description div */
+  flex-direction: column; /* Stack text vertically within the description div */
+}
+
+.close-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+  font-size: 24px;
+  color: #333; /* Close button color */
+  background: white;
+  border: none;
+}

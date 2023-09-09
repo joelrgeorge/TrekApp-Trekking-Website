@@ -1,0 +1,122 @@
+/* Add this CSS to your existing dashboard.css file or create a new one */
+
+/* Style the table */
+.tour-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+/* Style table header */
+.tour-table th {
+  background-color: #f2f2f2;
+  text-align: left;
+  padding: 10px;
+  border: 1px solid #ddd;
+}
+
+/* Style table cells */
+.tour-table td {
+  padding: 10px;
+  border: 1px solid #ddd;
+}
+
+/* Style the "Delete" button */
+.tour-table button {
+  background-color: #f44336;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  cursor: pointer;
+}
+
+.tour-table button:hover {
+  background-color: #d32f2f;
+}
+/* Add this CSS to your existing dashboard.css file or create a new one */
+
+/* Center the table */
+.table-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin: 0 auto;
+  max-width: 80%; /* Adjust the maximum width as needed */
+}
+
+/* Style the table */
+.tour-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+/* ... (the rest of your existing CSS) */
+/* Add this CSS to your existing dashboard.css file or create a new one */
+
+/* Style the navigation box */
+.nav-box {
+  display: flex;
+  justify-content: space-between;
+  background-color: #f2f2f2;
+  padding: 10px;
+  border-radius: 5px;
+  margin: 20px 0;
+}
+
+/* Style the links inside the box */
+.nav-box a {
+  text-decoration: none;
+  color: #333;
+  padding: 5px 10px;
+  border: 1px solid #ddd;
+  border-radius: 3px;
+}
+
+/* Add hover effect for links */
+.nav-box a:hover {
+  background-color: #007bff;
+  color: #fff;
+}
+
+/* ... (the rest of your existing CSS) */
+/* Add this CSS to your existing dashboard.css file or create a new one */
+
+/* Center-align the dashboard elements */
+.dashboard-container {
+  text-align: center;
+}
+
+.dashboard-title {
+  font-size: 36px;
+  margin-top: 20px;
+}
+
+/* Style the navigation box */
+.nav-box {
+  display: flex;
+  justify-content: space-between;
+  background-color: #f2f2f2;
+  padding: 10px;
+  border-radius: 5px;
+  margin: 20px auto;
+}
+
+/* Style the links inside the box */
+.nav-box a {
+  text-decoration: none;
+  color: #333;
+  padding: 5px 10px;
+  border: 1px solid #ddd;
+  border-radius: 3px;
+}
+
+/* Add hover effect for links */
+.nav-box a:hover {
+  background-color: #007bff;
+  color: #fff;
+}
+
+
+

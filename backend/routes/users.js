@@ -3,7 +3,8 @@ import {
     deleteUser,
     getAllUser,
     getSingleUser,
-    updateUser } from '../controllers/userController.js';
+    updateUser,
+   getUserCount } from '../controllers/userController.js';
 const router = express.Router();
 
 import {verifyAdmin, verifyUser } from '../utils/verifyToken.js';
@@ -12,12 +13,15 @@ import {verifyAdmin, verifyUser } from '../utils/verifyToken.js';
 router.put("/:id",verifyUser, updateUser);
 
 // delete user 
-router.delete("/:id",verifyUser, deleteUser);
+router.delete("/:id", verifyUser,deleteUser);
 
 // get single user 
-router.get("/:id", verifyUser, getSingleUser);
+router.get("/:id", getSingleUser);
 
-// get all tuser
-router.get("/",verifyAdmin, getAllUser);
+// get all user
+router.get("/",getAllUser);
 
-export default router
+// get user count
+router.get("/search/getUserCount", getUserCount);
+
+export default router;

@@ -1,0 +1,29 @@
+/* Bookingss.css */
+
+/* Style for the section containing the table */
+section {
+    padding: 30px;
+  }
+  
+  /* Style for the table headings */
+  table th {
+    background-color: #f2f2f2;
+    text-align: left;
+    padding: 10px;
+  }
+  
+  /* Style for table cells */
+  table td {
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+  }
+  
+  /* Add additional styles as needed */
+  /* booking.css */
+
+.fw-bold {
+  font-weight: bold;
+  font-size: 24px; /* Adjust the font size as needed */
+  color: #333; /* Adjust the color as needed */
+  /* You can add more styles like margin, padding, etc. here */
+}

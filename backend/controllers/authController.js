@@ -13,7 +13,7 @@ export const register = async (req, res) => {
             username: req.body.username,
             email: req.body.email,
             password: hash,
-            photo: req.body.photo,
+         
         });
 
         await newUser.save();
@@ -23,7 +23,6 @@ export const register = async (req, res) => {
         res.status(500).json({ success: false, message: "Failed to create. Try again" });
     }
 };
-
 // User login
 export const login = async (req, res) => {
     const email = req.body.email;
@@ -45,8 +44,8 @@ export const login = async (req, res) => {
                 .json({ success: false, message: 'Incorrect email or password' });
         }
 
-        // Destructure user document, excluding password and role
-        const { password, role, ...rest } = user._doc;
+        // Destructure user document, excluding password
+        const { password, ...rest } = user._doc;
 
         // Create JWT token
         const token = jwt.sign(
@@ -61,13 +60,10 @@ export const login = async (req, res) => {
             expires: new Date(Date.now() + 15 * 24 * 60 * 60 * 1000), // 15 days in milliseconds
         });
 
-        res.status(200).
-        json({
+        res.status(200).json({
             token,
-
-           
             data: { ...rest },
-            role,
+            role: user.role, // Include the user's role in the response
         });
     } catch (err) {
         // Log the error for debugging

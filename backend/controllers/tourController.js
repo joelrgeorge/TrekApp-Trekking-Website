@@ -24,6 +24,7 @@ export const createTour = async (req,res) => {
         }
 };
 
+
 //update tour 
 export const updateTour = async (req, res) => {
     const id =req.params.id
@@ -82,7 +83,7 @@ export const getSingleTour = async (req, res) => {
           
         res.status(200).json({
                 success: true,
-                message: "Successful deleted", 
+                message: "Successful", 
                 data: tour,
             });
 
@@ -103,8 +104,8 @@ export const getAllTour = async (req, res) => {
     
         const tours = await Tour.find({})
         .populate("reviews")
-        .skip(page * 8)
-        .limit(8);
+        .skip(page * 100)
+        .limit(100);
           
          
 
@@ -197,3 +198,5 @@ export const getTourCount = async(req,res)=>{
     }
     
 }
+
+

@@ -6,21 +6,39 @@ import calculateAvgRating from './../utils/avgRating';
 import avatar from '../assets/images/avatar.jpg';
 import Booking from "../components/Booking/Booking";
 import Newsletter from "../shared/Newsletter";
+
 import useFetch from './../hooks/useFetch';
 import { BASE_URL} from './../utils/config';
 import {AuthContext} from "./../context/AuthContext";
 
+
+
+
+
 const TourDetails = () => {
     
-    const { id } = useParams();
+    const { _id } = useParams();
     const reviewMsgRef = useRef("");
     const [tourRating,setTourRating]=useState(null);
-const {user} = useContext(AuthContext)
+    const {user} = useContext(AuthContext) 
     
-    const {data:tour, loading, error} = useFetch(`${BASE_URL}/tours/${id}`);
+
+    const {data:tour, loading, error} = useFetch(`${BASE_URL}/tours/${_id}`);
+    
+    
+    
     
   
-    const { photo , title, desc, price, address, reviews, city, distance, maxGroupSize } = tour;
+    const { photo ,
+         title, 
+         desc, 
+         price, 
+         address, 
+         reviews, 
+         city, 
+         distance, 
+         maxGroupSize, 
+        } = tour;
    
     const {totalRating, avgRating} = calculateAvgRating (reviews);
 
@@ -44,7 +62,7 @@ const {user} = useContext(AuthContext)
                 rating: tourRating
             }
 
-            const res = await fetch(`${BASE_URL}/review/${id}`,{
+            const res = await fetch(`${BASE_URL}/review/${_id}`,{
                 method:'post',
                 headers:{
                     'content-type':'application/jason'
@@ -53,7 +71,7 @@ const {user} = useContext(AuthContext)
                     body:JSON.stringify(reviewObj)
 
             })
-            const result= await res.jason()
+            const result= await res.json()
             if(!res.ok) {
                 return alert(result.message);
             }
@@ -64,9 +82,12 @@ const {user} = useContext(AuthContext)
         }
     
     };
-useEffect(()=>{
-    window.scrollTo(0,0)
-},[tour])
+useEffect(() => {
+    if (tour) {
+        window.scrollTo(0, 0);
+    }
+}, [tour]);
+
 
       return (
         <>
@@ -200,11 +221,3 @@ useEffect(()=>{
 };
     
 export default TourDetails;
-
-
-
-
-
-
-
-

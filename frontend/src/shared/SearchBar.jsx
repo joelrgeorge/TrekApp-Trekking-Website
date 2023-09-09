@@ -25,12 +25,12 @@ const SearchBar = () => {
         return alert("All field are required!");
     }
 
-    const res = await fetch( `${BASE_URL}/tours/search/getTourBySearch?city=${location}&distanc=${distance}&maxGroupSize=${maxGroupSize}`)
+    const res = await fetch( `http://localhost:4000/tours/search/getTourBySearch?city=${location}&distance=${distance}&maxGroupSize=${maxGroupSize}`)
 
     if(!res.ok ) alert('Something went wrong')
 
     const result = await res.json()
-    navigate(`/tours/search?city=${location}&distanc=${distance}&maxGroupSize=${maxGroupSize}`, 
+    navigate(`http://localhost:4000/tours/search?city=${location}&distanc=${distance}&maxGroupSize=${maxGroupSize}`, 
     {state: result.data}
     );
 

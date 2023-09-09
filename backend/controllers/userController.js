@@ -1,118 +1,136 @@
 import User from "../models/User.js";
 
-
-// create new User
-export const createUser = async (req,res) => {
-
+// Create new User
+export const createUser = async (req, res) => {
+  try {
     const newUser = new User(req.body);
+    const savedUser = await newUser.save();
 
-        try{
-            const savedUser  = await newUser.save();
-
-            res.status(200).json({
-                success: true,
-                message: "Successfully created", 
-                data: savedUser,
-            });
-        } catch (err) {
-            res
-            .status(500)
-            .json({success: false, message: "Failed to create. Try again"});
-
-        }
+    res.status(201).json({
+      success: true,
+      message: "Successfully created",
+      data: savedUser,
+    });
+  } catch (err) {
+    res.status(500).json({
+      success: false,
+      message: "Failed to create. Try again.",
+      error: err.message,
+    });
+  }
 };
 
-//update User 
+// Update User
 export const updateUser = async (req, res) => {
-    const id =req.params.id
+  const id = req.params.id;
 
-    try{
-        const updatedUser = await User.findByIdAndUpdate(id, {
-            $set: req.body
-        }, {new:true});
+  try {
+    const updatedUser = await User.findByIdAndUpdate(id, { $set: req.body }, { new: true });
 
-        res.status(200).json({
-                success: true,
-                message: "Successfully updated", 
-                data: updatedUser,
-            });
-
-        
-
-
-    } catch (err) {
-        res.status(500).json({
-                success: false,
-                message: "failed to update", 
-               
-            });
+    if (!updatedUser) {
+      return res.status(404).json({
+        success: false,
+        message: "User not found.",
+      });
     }
+
+    res.status(200).json({
+      success: true,
+      message: "Successfully updated",
+      data: updatedUser,
+    });
+  } catch (err) {
+    res.status(500).json({
+      success: false,
+      message: "Failed to update.",
+      error: err.message,
+    });
+  }
 };
 
-//delete User 
+// Delete User
 export const deleteUser = async (req, res) => {
-    const id = req.params.id
+  const id = req.params.id;
 
-    try{
-        const deletedUser = await User.findByIdAndDelete(id);
+  try {
+    const deletedUser = await User.findByIdAndDelete(id);
 
-        res.status(200).json({
-                success: true,
-                message: "Successfully deleted", 
-                
-            });
-
-         } catch (err) {
-        res.status(500).json({
-                success: false,
-                message: "failed to delete", 
-               
-         });
+    if (!deletedUser) {
+      return res.status(404).json({
+        success: false,
+        message: "User not found.",
+      });
     }
+
+    res.status(200).json({
+      success: true,
+      message: "Successfully deleted",
+    });
+  } catch (err) {
+    res.status(500).json({
+      success: false,
+      message: "Failed to delete.",
+      error: err.message,
+    });
+  }
 };
-//getSingle user
+
+// Get Single User
 export const getSingleUser = async (req, res) => {
-    const id =req.params.id;
+  const id = req.params.id;
 
-    try{
-        const user = await Tour.findById(id);
-          
-        res.status(200).json({
-                success: true,
-                message: "Successful", 
-                data: user,
-            });
+  try {
+    const user = await User.findById(id);
 
-    } catch (err) {
-        res.status(404).json({
-                success: false,
-                message: "not found",             
-            });
+    if (!user) {
+      return res.status(404).json({
+        success: false,
+        message: "User not found.",
+      });
     }
+
+    res.status(200).json({
+      success: true,
+      message: "Successful",
+      data: user,
+    });
+  } catch (err) {
+    res.status(500).json({
+      success: false,
+      message: "Internal server error.",
+      error: err.message,
+    });
+  }
 };
-//getAll user
+
+// Get All Users
 export const getAllUser = async (req, res) => {
+  try {
+    const users = await User.find({});
 
-     
- 
-    try{
-    
-        const user = await User.find({})
-  
-          
-         
+    res.status(200).json({
+      success: true,
+      message: "Successful",
+      count: users.length,
+      data: users,
+    });
+  } catch (err) {
+    res.status(500).json({
+      success: false,
+      message: "Internal server error.",
+      error: err.message,
+    });
+  }
+}
 
-        res.status(200).json({
-            success: true,
-        
-            message: "Successful", 
-            data: user,
-        });
+  // get user count
+export const getUserCount = async(req,res)=> {
+  try{
+      const UserCount = await User.estimatedDocumentCount();
 
-    } catch (err) {
-        res.status(404).json({
-            success: false,
-            message: "not found",             
-        });
-    }
-};
+      res.status(200).json({success:true, data:UserCount});
+  } catch(req){
+      res.status(500).json({ success:false, message: "failed to fetch"})
+
+  }
+}

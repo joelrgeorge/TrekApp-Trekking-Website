@@ -1,10 +1,14 @@
-import React,{useRef,useEffect,useContext} from "react";
-import { Container, Row,Button} from "reactstrap";
+import React,{useRef,useEffect,useState,useContext} from "react";
+import { Container, Row} from "reactstrap";
 import {NavLink, Link, useNavigate} from "react-router-dom";
 
 import logo from "../../assets/images/logo.png";
 import "./header.css";
 import {AuthContext} from './../../context/AuthContext';
+import {motion} from 'framer-motion'
+import userIcon from '../../assets/images/user.png';
+
+
 
 const nav__links=[
     {
@@ -22,35 +26,48 @@ const nav__links=[
 ]
 
 const Header = () => {
-
+  const [dropdownVisible, setDropdownVisible] = useState(false);
+  const { user, dispatch } = useContext(AuthContext);
+  const navigate = useNavigate();
+  const profileActionsRef = useRef(null);
   const headerRef = useRef(null)
   const menuRef = useRef(null)
-  const navigate = useNavigate()
-  const {user, dispatch} = useContext(AuthContext)
 
-  const logout = ()=> {
-    dispatch({type:'LOGOUT'})
-    navigate('/')
-  }
+  const toggleProfileDropdown = () => {
+    setDropdownVisible(!dropdownVisible);
+   };
   
   const stickyHeaderFunc = ()=>{
     window.addEventListener('scroll',()=>{
       if (document.body.scrollTop >80 || document.documentElement.scrollTop >80)
-       {
-         headerRef.current.classList.add('sticky__header')  
-      }else{
-        headerRef.current.classList.remove('sticky__header') 
+      if (headerRef && headerRef.current) {
+        // Check if headerRef and headerRef.current exist
+        const element = headerRef.current;
+      
+        if (!element.classList.contains('sticky__header')) {
+          // Check if the class 'sticky__header' is not already present
+          element.classList.add('sticky__header');
+        }
+      } else {
+        console.error('headerRef or headerRef.current is undefined or null.');
       }
+      
     })
   }
+  const logout = ()=> {
+    dispatch({type:'LOGOUT'})
+    navigate('/')
+  }
+
 
   useEffect(()=>{
     stickyHeaderFunc()
 
-    return window.removeEventListener('scroll',stickyHeaderFunc)
+    return () => window.removeEventListener('scroll',stickyHeaderFunc)
   })
 
 const toggleMenu = () => menuRef.current.classList.toggle('show__menu')
+
 
 
   return (
@@ -59,13 +76,12 @@ const toggleMenu = () => menuRef.current.classList.toggle('show__menu')
         <Row>
           <div className="nav__wrapper d-flex align-items-center justify-content-between">
       
-          {/*==========logo========*/}
+       
           <div className="logo">
-            <img src={logo} alt=""/>
+            <img src={logo} alt="logo"/>
+           
           </div>
-          {/*==========logo ends========*/}
-
-          {/*==========menu starts========*/}
+          
           <div className="navigation" ref={menuRef} onClick={toggleMenu}>
             <ul className="menu d-flex align-items-center gap-5">
               {
@@ -73,7 +89,7 @@ const toggleMenu = () => menuRef.current.classList.toggle('show__menu')
                   <li className="nav__item" key={index}>
                     <NavLink 
                       to={item.path} 
-                      className={navClass =>
+                      className={(navClass) =>
                          navClass.isActive ? "active__link": ""
                        }
                     >
@@ -81,40 +97,61 @@ const toggleMenu = () => menuRef.current.classList.toggle('show__menu')
                     </NavLink>
                   </li>
                   ))
-              }
+}
              </ul>
           </div>
 
           {/*==========menu ends========*/}
 
-          <div className="nav__right d-flex align-items-center gap-4">
-            <div className="nav__btns d-flex align-items-center gap-4">
+     <div className="nav__icons">    
+    <div className="profile">
+      <motion.img
+        whileTap={{ scale: 1.1 }}
+        src={ userIcon}
+        alt=""
+        onClick={toggleProfileDropdown}
+      />
 
-{
-  user?( 
-  <> 
-<h5 className='mb-0'>{user.username}</h5>
-<Button className="btn btn-dark" onClick={logout}> Logout  </Button>
-
-  </>
-   ) : (
-     <>
-  <Button className="btn secondary__btn"><Link to='/login'>Login</Link></Button>
-              <Button className="btn primary__btn"><Link to='/register'>Register</Link></Button>
-  </>
-   )
-
-   }
+      {dropdownVisible && (
+        <div className="profile__actions" ref={profileActionsRef}>
+          {
+          user ? (
+            <div className="d-flex flex-column align-items-center justify-content-center flex-column">
+              <span onClick={logout}>Logout</span>
+        
             </div>
+          ) : (
+            <div className="d-flex flex-column align-items-center  justify-content-center flex-column">
+              <div className="profile__table">
+              <Link to="/register" className="profile__link">
+                  Register
+                </Link>
+                <Link to="/login" className="profile__link">
+                  Login
+                </Link>
+                <Link to="/dashboard" className="profile__link">
+                  Dashboard
+                </Link>
+              </div>
+            </div>
+          )}
+        </div>
+      )}
+    </div>
+  
+</div>
 
-            <span className="mobile__menu" onClick={toggleMenu}>
-              <i class="ri-menu-line"></i>
+
+            
+            <div className="mobile__menu">
+            <span  onClick={toggleMenu}>
+            <i class="ri-menu-line"></i>
+              
             </span>
+             </div>
+          </div>
 
-          </div>
-   
-          </div>
-   
+          
         </Row>       
       </Container>
     </header>
