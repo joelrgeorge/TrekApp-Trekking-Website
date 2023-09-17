@@ -1,10 +1,10 @@
-import React, {useContext} from 'react';
+import React, {useContext,useRef,useState} from 'react';
 import { Container,Row } from 'reactstrap';
 import {AuthContext} from "../context/AuthContext"
-
+import {motion} from 'framer-motion'
 import userIcon from '../assets/images/user.png';
 import "../styles/admin-nav.css";
-import { NavLink } from 'react-router-dom';
+import { NavLink ,useNavigate} from 'react-router-dom';
 import logo from "../assets/images/logo.png";
 
 
@@ -43,8 +43,28 @@ const admin__nav = [
 
 const AdminNav = () => {
 
-    const {user} = useContext(AuthContext);
-
+    const [dropdownVisible, setDropdownVisible] = useState(false);
+    const { dispatch } = useContext(AuthContext);
+    const navigate = useNavigate();
+    const profileActionsRef = useRef(null);
+    const menuRef = useRef(null)
+    const toggleProfileDropdown = () => {
+        setDropdownVisible(!dropdownVisible);
+       };
+       const logout = ()=> {
+        dispatch({type:'LOGOUT'})
+        navigate('/')
+      }
+      const home = ()=> {
+        dispatch({type:'HOME'})
+        navigate('/')
+      }
+      const user = ()=> {
+        dispatch({type:'USER'})
+        navigate('/login')
+      }
+      
+const toggleMenu = () => menuRef.current.classList.toggle('show__menu')
     return (
         <>
         <header className='admin__header'>
@@ -55,17 +75,30 @@ const AdminNav = () => {
             <img src={logo} alt="logo"/>
            
           </div>
-          
-    <div className='logon'>
-     
-</div>
-
+   
 
 
 
 <div className="admin__nav-top-right">
-    
-    <img src={userIcon} alt="" />
+<div className="profile">
+  <motion.img
+    whileTap={{ scale: 1.1 }}
+    src={userIcon}
+    alt=""
+    onClick={toggleProfileDropdown}
+  />
+
+  {dropdownVisible && (
+    <div className="profile__actions" ref={profileActionsRef}>
+      {/* Use curly braces {} to enclose the content */}
+      <div className="d-flex flex-column align-items-center justify-content-center flex-column">
+      <span onClick={logout} style={{ color: 'black' }}>Logout</span>
+      <span onClick={home} style={{ color: 'black' }}>Home</span>
+      <span onClick={user} style={{ color: 'black' }}>Login as user</span>
+      </div>
+    </div>
+  )}
+</div>
 </div>
     </div>
     </Container>

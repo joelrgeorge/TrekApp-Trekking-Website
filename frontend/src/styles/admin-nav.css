@@ -42,10 +42,27 @@
   list-style: none;
   margin: 0;
 }
-
-.admin__menu-item {
-  /* Add styles for each menu item */
+/* Add these styles to your CSS file */
+.bookings-table {
+  border-collapse: collapse;
+  width: 100%;
 }
+
+.bookings-table th,
+.bookings-table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+.bookings-table th {
+  background-color: #f2f2f2;
+}
+
+.bookings-table tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
 
 /* Define the style for inactive links */
 .admin__menu-item a {
@@ -61,10 +78,27 @@
   background-color: #ff6b6b; /* Active button background color */
   color: #fff; /* Text color for active links */
 }
-
+.profile {
+  position: relative;
+  cursor: pointer;
+}
 /* Style for link hover state */
 .admin__menu-item a:hover {
   background-color: #ff6b6b; /* Hover button background color */
   color: #fff; /* Text color on hover */
   transition: background-color 0.3s, color 0.3s;
+}
+
+.profile__actions {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background-color: #ffffff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  display: none;
+  min-width: 150px; /* Set the width as needed */
+}
+
+.profile:hover .profile__actions {
+  display: block;
 }

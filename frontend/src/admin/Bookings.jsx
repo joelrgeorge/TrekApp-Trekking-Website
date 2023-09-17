@@ -47,8 +47,14 @@ const Bookingss = () => {
       FullName: booking.fullName,
       GuestSize: booking.guestSize,
       Phone: booking.phone,
-      BookAt: booking.bookAt,
+      BookAt: tours.find((tour) => tour.title === booking.tourName)?.date &&
+      new Date(tours.find((tour) => tour.title === booking.tourName).date).toLocaleDateString('en-US', {
+        year: 'numeric',
+        month: 'short',
+        day: 'numeric',
+      }),
       // Fetch and display tour details based on booking data
+      "pickup":booking.pickup,
       "Tour Details": tours.find((tour) => tour.title === booking.tourName)?.title,
     }));
 
@@ -71,15 +77,16 @@ const Bookingss = () => {
             <h4 className="fw-bold">Bookings</h4>
           </Col>
           <Col lg="12">
-            <table className="table">
+          <table className="table bookings-table">
               <thead>
                 <tr>
                   <th>User Email</th>
                   <th>Full Name</th>
                   <th>Guest Size</th>
                   <th>Phone</th>
-                  <th>BookAt</th>
+                  <th>Dated</th>
                   {/* Add this column header for tour details */}
+                  <th>Pickup</th>
                   <th>Tour Details</th>
                   <th>Actions</th>
                 </tr>
@@ -96,7 +103,16 @@ const Bookingss = () => {
                       <td>{booking.fullName}</td>
                       <td>{booking.guestSize}</td>
                       <td>{booking.phone}</td>
-                      <td>{booking.bookAt}</td>
+                      <td>
+  {tours.find((tour) => tour.title === booking.tourName)?.date &&
+    new Date(tours.find((tour) => tour.title === booking.tourName).date).toLocaleDateString('en-US', {
+      year: 'numeric',
+      month: 'short',
+      day: 'numeric',
+    })}
+</td>
+
+                      <td>{booking.pickup}</td>
                       <td>
                         {/* Display tour details based on booking data */}
                         {tours.find((tour) => tour.title === booking.tourName)?.title}

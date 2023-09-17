@@ -4,18 +4,19 @@ import Booking from '../models/Booking.js'
 
 export const createBooking = async (req, res) => {
   try {
-    const { tourId, tourName, ...bookingData } = req.body; // Include tourName in the request body
+    const { userIds, tourId, tourName, ...otherBookingData } = req.body;
 
-    // Create a new booking with the tourId and tourName
+    // Create a new booking with userIds, tourId, and tourName
     const newBooking = new Booking({
-      ...bookingData,
+      userIds,
       tourId,
-      tourName, // Include the tourName in the booking
+      tourName,
+      ...otherBookingData, // Include other booking data
     });
 
     const savedBooking = await newBooking.save();
 
-    res.status(200).json({
+    res.status(201).json({
       success: true,
       message: "Your tour is booked",
       data: savedBooking,
@@ -24,6 +25,7 @@ export const createBooking = async (req, res) => {
     res.status(500).json({
       success: false,
       message: "Internal server error",
+error: err.message,
     });
   }
 };

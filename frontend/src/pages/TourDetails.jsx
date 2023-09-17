@@ -38,50 +38,52 @@ const TourDetails = () => {
          city, 
          distance, 
          maxGroupSize, 
+         date,
         } = tour;
    
     const {totalRating, avgRating} = calculateAvgRating (reviews);
 
     const options = {day: 'numeric',month: "long", year:"numeric"};
 
-    const submitHandler = async e => {
+    const submitHandler = async (e) => {
         e.preventDefault();
-        const reviewText =reviewMsgRef.current.value;
-
-       
-        
+        const reviewText = reviewMsgRef.current.value;
+      
         try {
-
-            if(!user || user===undefined || user===null){
-
-                alert('please sign in')
-            }
-            const reviewObj = {
-                userName: user?.username,
-                reviewText,
-                rating: tourRating
-            }
-
-            const res = await fetch(`${BASE_URL}/review/${_id}`,{
-                method:'post',
-                headers:{
-                    'content-type':'application/jason'
-                },
-                    credentials:'include',
-                    body:JSON.stringify(reviewObj)
-
-            })
-            const result= await res.json()
-            if(!res.ok) {
-                return alert(result.message);
-            }
-            alert(result.message)
-            
+          if (!user || user === undefined || user === null) {
+            alert('Please sign in');
+            return;
+          }
+      
+          const reviewObj = {
+            username: user?.username,
+            reviewText,
+            rating: tourRating,
+          };
+      
+          const res = await fetch(`${BASE_URL}/review/${_id}`, {
+            method: 'post',
+            headers: {
+              'content-type': 'application/json',
+            },
+            credentials: 'include',
+            body: JSON.stringify(reviewObj),
+          });
+      
+          const result = await res.json();
+          
+          if (!res.ok) {
+            alert(result.message);
+            return;
+          }
+      
+          // Refresh the page after a successful review submission
+          window.location.reload();
         } catch (err) {
-            alert(err.message);
+          alert(err.message);
         }
-    
-    };
+      };
+      
 useEffect(() => {
     if (tour) {
         window.scrollTo(0, 0);
@@ -130,6 +132,15 @@ useEffect(() => {
                               <span><i class="ri-money-dollar-circle-line"></i> ${price} /per person</span>
                               <i class="ri-map-pin-time-line"></i> {distance} k/m
                               <span><i class="ri-group-line"></i>{maxGroupSize} people </span>
+                              <span>
+                              <i class="ri-calendar-event-line"></i>
+  {new Date(date).toLocaleDateString('en-US', {
+    year: 'numeric',
+    month: 'short',
+    day: 'numeric',
+  })}
+</span>
+
                             </div>
                             <h5>Description</h5>
                                  <p>{desc}</p>

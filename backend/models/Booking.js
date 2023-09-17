@@ -20,11 +20,12 @@ const bookingSchema = new mongoose.Schema(
       type: Number,
       required: true,
     },
-    bookAt: {
-      type: Date,
-      required: true,
-    },
+  
     tourName: {  // Add the tourName field here
+      type: String,  // Modify the type according to your data structure
+      required: true,  // Adjust the required flag as needed
+    },
+    pickup: {  // Add the tourName field here
       type: String,  // Modify the type according to your data structure
       required: true,  // Adjust the required flag as needed
     },

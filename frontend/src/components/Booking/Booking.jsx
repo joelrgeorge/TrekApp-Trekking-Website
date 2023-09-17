@@ -1,6 +1,6 @@
 import React, { useState, useContext, useEffect } from 'react';
 import './booking.css';
-import { Form, FormGroup, ListGroup, ListGroupItem, Button } from 'reactstrap';
+import { Form, FormGroup, ListGroup, ListGroupItem,Input,Label, Button } from 'reactstrap';
 
 import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../context/AuthContext';
@@ -20,6 +20,7 @@ const Booking = ({ tour, avgRating }) => {
     phone: '',
     guestSize: 1,
     bookAt: '',
+    "pickup":'',
   });
 
   // Update tourName in the booking state when the tour prop changes
@@ -111,19 +112,40 @@ const Booking = ({ tour, avgRating }) => {
             />
           </FormGroup>
           <FormGroup className="d-flex align-items-center gap-3">
-            <input
-              type="date"
-              placeholder=""
-              id="bookAt"
-              required
-              onChange={handleChange}
-            />
-            <input
-              type="number"
-              placeholder="Guest"
-              id="guestSize"
-              onChange={handleChange}
-            />
+          <input
+  type="text"
+  placeholder="Date"
+  id="date"
+  required
+  value={new Date(tour.date).toLocaleDateString('en-US', {
+    year: 'numeric',
+    month: 'short',
+    day: 'numeric',
+  })}
+  readOnly
+/>
+
+            <Label>Pickup</Label>
+  <Input
+    type="select"
+    id="pickup"
+    name="pickup"
+    value={booking.pickup}
+    onChange={handleChange}
+    required
+  >
+    <option value="">Select Pickup Option</option>
+    <option value={tour.pickupOption1}>{tour.pickupOption1}</option>
+    <option value={tour.pickupOption2}>{tour.pickupOption2}</option>
+    <option value={tour.pickupOption3}>{tour.pickupOption3}</option>
+    <option value={tour.pickupOption4}>{tour.pickupOption4}</option>
+    <option value={tour.pickupOption5}>{tour.pickupOption5}</option>
+    <option value={tour.pickupOption6}>{tour.pickupOption6}</option>
+    <option value={tour.pickupOption7}>{tour.pickupOption7}</option>
+    <option value={tour.pickupOption8}>{tour.pickupOption8}</option>
+    <option value={tour.pickupOption9}>{tour.pickupOption9}</option>
+    <option value={tour.pickupOption10}>{tour.pickupOption10}</option>
+  </Input>
           </FormGroup>
         </Form>
       </div>
