@@ -74,7 +74,7 @@ const Bookingss = () => {
       <Container>
         <Row>
           <Col lg="12">
-            <h4 className="fw-bold">Bookings</h4>
+          <h4 style={{fontFamily: 'Josefin Sans, sans-serif', fontSize: '64px', textAlign: 'center'}}>Booking List</h4>
           </Col>
           <Col lg="12">
           <table className="table bookings-table">

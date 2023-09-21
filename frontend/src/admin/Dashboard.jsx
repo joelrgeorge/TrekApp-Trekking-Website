@@ -48,7 +48,7 @@ const Dashboard = () => {
         </div>
       </nav>
       <div className="table-container"> {/* Wrap the table in a container */}
-        <h2>Tour Packages</h2>
+      <h2 style={{ fontFamily: 'Josefin Sans, sans-serif', fontSize: '48px' }}>Tour Packages</h2>
         <table className="tour-table"> {/* Apply the tour-table class here */}
           <thead>
             <tr>

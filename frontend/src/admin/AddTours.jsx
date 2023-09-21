@@ -94,7 +94,7 @@ date: '', // New field for tour date
       <Container>
         <Row>
           <Col lg="12">
-            <h4 className="mb-5">Add Tours</h4>
+          <h4 style={{ fontFamily: 'Josefin Sans, sans-serif', fontSize: '64px', textAlign: 'center' }}> Add Tours </h4>
             <Form onSubmit={handleSubmit}>
               <FormGroup>
                 <Label>Title</Label>

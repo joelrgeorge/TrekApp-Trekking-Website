@@ -1,4 +1,5 @@
-/* Add this CSS to your existing dashboard.css file or create a new one */
+@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap');
 
 /* Style the table */
 .tour-table {
@@ -39,6 +40,7 @@
 .table-container {
   display: flex;
   flex-direction: column;
+  font-family: 'Josefin Sans', sans-serif;
   align-items: center;
   text-align: center;
   margin: 0 auto;
@@ -55,49 +57,23 @@
 /* ... (the rest of your existing CSS) */
 /* Add this CSS to your existing dashboard.css file or create a new one */
 
-/* Style the navigation box */
-.nav-box {
-  display: flex;
-  justify-content: space-between;
-  background-color: #f2f2f2;
-  padding: 10px;
-  border-radius: 5px;
-  margin: 20px 0;
-}
-
-/* Style the links inside the box */
-.nav-box a {
-  text-decoration: none;
-  color: #333;
-  padding: 5px 10px;
-  border: 1px solid #ddd;
-  border-radius: 3px;
-}
-
-/* Add hover effect for links */
-.nav-box a:hover {
-  background-color: #007bff;
-  color: #fff;
-}
-
-/* ... (the rest of your existing CSS) */
-/* Add this CSS to your existing dashboard.css file or create a new one */
-
 /* Center-align the dashboard elements */
 .dashboard-container {
   text-align: center;
 }
 
 .dashboard-title {
-  font-size: 36px;
+  font-size: 75px;
   margin-top: 20px;
+  color: #808bff;
+  font-family: 'Lobster', cursive;
 }
 
 /* Style the navigation box */
 .nav-box {
   display: flex;
-  justify-content: space-between;
-  background-color: #f2f2f2;
+  justify-content: space-evenly;
+  background-color: #ffffff;
   padding: 10px;
   border-radius: 5px;
   margin: 20px auto;
@@ -106,15 +82,15 @@
 /* Style the links inside the box */
 .nav-box a {
   text-decoration: none;
-  color: #333;
+  color: #00a6ff;
   padding: 5px 10px;
-  border: 1px solid #ddd;
+  border: 1px solid #009dff;
   border-radius: 3px;
 }
 
 /* Add hover effect for links */
 .nav-box a:hover {
-  background-color: #007bff;
+  background-color: #105cd5;
   color: #fff;
 }
 

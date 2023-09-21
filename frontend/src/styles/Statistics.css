@@ -1,4 +1,13 @@
+@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;600;700&family=Satisfy&display=swap');
 /* Statistics.css */
+
+.statistics-title {
+    font-size: 75px;
+    margin-top: 20px;
+    color: #808bff;
+    font-family: 'Lobster', cursive;
+  }
 
 .statistics-container {
     text-align: center;
@@ -8,18 +17,35 @@
 .count-circle {
     display: inline-block;
     margin: 20px;
+    text-align: center;
+    font-size: 30px; /* Increase font size */;
+    font-family: 'Satisfy', cursive;
+    font-weight: bold; /* Make the text bold */
+    color: #333; /* Text color */
+    text-transform: uppercase; /* Convert text to uppercase */
+    letter-spacing: 2px; /* Add letter spacing */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); /* Add a text shadow */
 }
 
 .circle {
     width: 200px;
     height: 200px;
-    background-color: orange;
+    background: linear-gradient(to bottom right, #ff9900, #ff6600);
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);
     border-radius: 50%;
+    font-family: 'YourFontName', sans-serif;
+    font-size: 48px;
+    letter-spacing: 2px;
     color: #fff;
-    font-size: 36px;
     line-height: 200px;
     text-align: center;
     font-weight: bold; /* Make the text bold */
+    border: 3px dashed #ff9900;
+}
+
+.circle:hover {
+    background-color: #ff3300;
+    color: #fff;
 }
 
 /* Style th and td elements */

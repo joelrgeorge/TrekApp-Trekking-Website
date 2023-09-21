@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { Container, Row, Col } from 'reactstrap'; // Import Bootstrap components if used
 import '../styles/users.css'; // Import your CSS file
 
 const Users = () => {
@@ -25,6 +26,7 @@ const Users = () => {
     try {
       // Send a DELETE request to your API to delete the user
       await axios.delete(`http://localhost:4000/api/v1/users/${userId}`);
+
       // Remove the deleted user from the local state
       setUsers((prevUsers) =>
         prevUsers.filter((user) => user._id !== userId)
@@ -35,40 +37,50 @@ const Users = () => {
   };
 
   return (
-    <div>
-      <h1>User List</h1>
-      {loading ? (
-        <p>Loading users...</p>
-      ) : (
-        <table className="user-table">
-          <thead>
-            <tr>
-              <th>Username</th>
-              <th>Email</th>
-              <th>Role</th>
-              <th>Actions</th> {/* Add a new column for actions */}
-            </tr>
-          </thead>
-          <tbody>
-            {users.map((user) => (
-              <tr key={user._id}>
-                <td>{user.username}</td>
-                <td>{user.email}</td>
-                <td>{user.role}</td>
-                <td>
-                  <button
-                    onClick={() => handleDelete(user._id)}
-                    className="delete-button"
-                  >
-                    Delete
-                  </button>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      )}
-    </div>
+    <section>
+      <Container>
+        <Row>
+          <Col lg="12">
+          <h4 style={{fontFamily: 'Josefin Sans, sans-serif', fontSize: '64px', textAlign: 'center'}}>User List</h4>
+          </Col>
+          <Col lg="12">
+            <table className="table user-table">
+              <thead>
+                <tr>
+                  <th>Username</th>
+                  <th>Email</th>
+                  <th>Role</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                {loading ? (
+                  <tr>
+                    <td colSpan="4">Loading...</td>
+                  </tr>
+                ) : (
+                  users.map((user) => (
+                    <tr key={user._id}>
+                      <td>{user.username}</td>
+                      <td>{user.email}</td>
+                      <td>{user.role}</td>
+                      <td>
+                        <button
+                          onClick={() => handleDelete(user._id)}
+                          className="btn btn-danger"
+                        >
+                          Delete
+                        </button>
+                      </td>
+                    </tr>
+                  ))
+                )}
+              </tbody>
+            </table>
+          </Col>
+        </Row>
+      </Container>
+    </section>
   );
 };
 

@@ -1,8 +1,8 @@
 /* Admin Header Styles */
 .admin__header {
-  background-color: orange; /* Header background color */
-  color: #fff; /* Text color */
-  padding: 10px 0;
+  background-color: orange;
+  color: #fff;
+  padding: 20px 0;
   border-bottom: 1px solid #ccc;
 }
 
@@ -23,25 +23,27 @@
 }
 
 .logo img {
-  width: 50px; /* Adjust the logo size */
+  width: 50px;
 }
 
 .admin__nav-top-right img {
-  width: 30px; /* Adjust the user icon size */
+  width: 30px;
 }
 
 /* Admin Menu Styles */
 .admin__menu {
-  background-color:whitesmoke; /* Menu background color */
+  background-color: #f5f5dc;
 }
 
 .admin__menu-list {
   display: flex;
   justify-content: space-between;
-  padding: 20px 0;
+  padding: 10px 0;
   list-style: none;
   margin: 0;
+  line-height: 1;
 }
+
 /* Add these styles to your CSS file */
 .bookings-table {
   border-collapse: collapse;
@@ -63,30 +65,37 @@
   background-color: #f2f2f2;
 }
 
-
 /* Define the style for inactive links */
 .admin__menu-item a {
   text-decoration: none;
-  color:#333; /* Text color for inactive links */
+  color: #333;
   padding: 10px 20px;
-  border-radius: 10px;
+  border-radius: 0px;
   transition: background-color 0.3s, color 0.3s;
 }
 
 /* Define the style for active links */
 .admin__menu-item a.active__admin-menu {
-  background-color: #ff6b6b; /* Active button background color */
-  color: #fff; /* Text color for active links */
+  background-color: #80ADFF;
+  color: #fff;
 }
+
+/* Style for link hover state */
+.admin__menu-item a:hover {
+  background-color: #80ADFF;
+  color: #fff;
+  transition: background-color 0.3s, color 0.3s;
+}
+
 .profile {
   position: relative;
   cursor: pointer;
 }
-/* Style for link hover state */
-.admin__menu-item a:hover {
-  background-color: #ff6b6b; /* Hover button background color */
-  color: #fff; /* Text color on hover */
-  transition: background-color 0.3s, color 0.3s;
+
+.profile img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
 }
 
 .profile__actions {
@@ -96,9 +105,24 @@
   background-color: #ffffff;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   display: none;
-  min-width: 150px; /* Set the width as needed */
+  min-width: 150px;
 }
 
 .profile:hover .profile__actions {
   display: block;
+}
+
+/* Style for the Dashboard link when not active */
+.admin__menu-item .dashboard-link {
+  background-color: transparent;
+  color: #333;
+  padding: 10px 20px;
+  border-radius: 10px;
+}
+
+/* Style for the Dashboard link hover state when not active */
+.admin__menu-item .dashboard-link:hover {
+  background-color: #FFD280;
+  color: #fff;
+  transition: background-color 0.3s, color 0.3s;
 }

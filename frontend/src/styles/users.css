@@ -1,5 +1,12 @@
 /* Users.css */
 
+/* Style for the table headings */
+.user-table th {
+  background-color: #f2f2f2;
+  text-align: center; /* Center align the text */
+  padding: 10px;
+}
+
 .user-table {
   border-collapse: collapse;
   width: 100%;
@@ -14,7 +21,6 @@
 }
 
 .user-table th {
-  background-color: #f2f2f2;
   font-weight: bold;
 }
 

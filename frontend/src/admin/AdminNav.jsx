@@ -76,9 +76,6 @@ const toggleMenu = () => menuRef.current.classList.toggle('show__menu')
            
           </div>
    
-
-
-
 <div className="admin__nav-top-right">
 <div className="profile">
   <motion.img

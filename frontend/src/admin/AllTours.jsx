@@ -34,7 +34,7 @@ const AllTours = () => {
 
   return (
     <Container className="all-tours-container">
-      <h2>All Tours</h2>
+      <h4 style={{fontFamily: 'Josefin Sans, sans-serif', fontSize: '64px', textAlign: 'center'}}>All Tours</h4>
       {tours.map((tour) => (
         <div key={tour._id} className="tour-card">
           <img src={tour.photo} alt={tour.title} className="tour-image" />
